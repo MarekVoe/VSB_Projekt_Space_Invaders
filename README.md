@@ -1,1 +1,1 @@
-# VSB_Projekt_Space_Invaders
+# VSB - Projekt Space Invaders
