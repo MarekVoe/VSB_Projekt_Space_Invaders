@@ -5,12 +5,19 @@
 #include <stdbool.h>
 #include "../include/player.h"
 
+typedef enum {
+    MENU,
+    GAME,
+    GAME_OVER
+} GameState;
+
 typedef struct {
     SDL_Window *window;
     SDL_Renderer *renderer;
     bool running;
     SDL_Event event;
     Player player;
+    GameState gameState;
 } Game;
 
 bool sdl_init(Game* game);
