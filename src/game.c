@@ -41,6 +41,7 @@ void loop(Game* game) {
             }
         }
         player_update(&game->player);
+        fprintf(stdout, "Mouse cursor position: x:%f, y:%f \n", game->player.cursor.x, game->player.cursor.y);
         SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderClear(game->renderer);
         player_render(&game->player, game->renderer);

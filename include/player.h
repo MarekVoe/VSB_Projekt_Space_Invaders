@@ -2,13 +2,17 @@
 #define PLAYER_HEADER_H
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include "../include/utils.h"
+#include "../include/vector2d.h"
+
+// ------------ TODO: Implement own Vector2D data type, instead of two float variables for coordinates ------------
 
 typedef struct {
-    float x;
-    float y;
-    int width;
-    int height;
+    Vector2D position;
+    Vector2D size;
+    Vector2D cursor;
     float speed;
+    float angle;
     SDL_Texture* texture;
 } Player;
 
