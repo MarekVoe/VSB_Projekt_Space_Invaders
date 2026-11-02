@@ -1,8 +1,8 @@
-# VSB - Projekt Space Invaders
+# VŠB - Projekt Space Invaders
 
 ### Využité assety: 
 - https://foozlecc.itch.io/void-main-ship
 
 
-### Zdroje
+### Zdroje:
 - https://mrlvsb.github.io/upr-skripta/c/aplikovane_ulohy/sdl/herni_smycka.html
