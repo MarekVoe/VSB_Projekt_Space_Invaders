@@ -34,14 +34,24 @@ bool sdl_init(Game* game) {
 void loop(Game* game) {
     player_init(&game->player, game->renderer,  375.0f, 500.0f);
 
+    Uint64 last = SDL_GetPerformanceCounter();
+
     while(game->running) {
+        Uint64 now = SDL_GetPerformanceCounter();
+
+        double deltaTime = (double)((now - last) / (double) SDL_GetPerformanceFrequency());
+
+        last = now;
+
         while(SDL_PollEvent(&game->event)) {
             if (game->event.type == SDL_QUIT) {
                 game->running = false;
             }
         }
-        player_update(&game->player);
-        fprintf(stdout, "Mouse cursor position: x:%f, y:%f \n", game->player.cursor.x, game->player.cursor.y);
+        player_update(&game->player, deltaTime);
+        // FPS DEBUG
+        fprintf(stdout, "FPS: %.2f\n", 1 / deltaTime);
+
         SDL_SetRenderDrawColor(game->renderer, 0, 0, 0, 255);
         SDL_RenderClear(game->renderer);
         player_render(&game->player, game->renderer);

@@ -17,7 +17,7 @@ typedef struct {
 } Player;
 
 void player_init(Player* player, SDL_Renderer* renderer, const float start_x, const float start_y);
-void player_update(Player* player);
+void player_update(Player* player, float deltaTime);
 void player_render(Player* player, SDL_Renderer* renderer);
 void player_destroy(Player* player);
 

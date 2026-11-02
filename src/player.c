@@ -5,7 +5,7 @@ void player_init(Player* player, SDL_Renderer* renderer, const float start_x, co
     player->position.y = start_y;
     player->size.x = 64;
     player->size.y = 64;
-    player->speed = 5.0f;
+    player->speed = 300.0f;
     player->texture = NULL;
 
     SDL_Surface* surface = IMG_Load("assets/images/T_PlayerShip.png");
@@ -17,7 +17,7 @@ void player_init(Player* player, SDL_Renderer* renderer, const float start_x, co
     }
 }
 
-void player_update(Player* player){
+void player_update(Player* player, float deltaTime) {
     const Uint8* keyState = SDL_GetKeyboardState(NULL);
 
     // SDL_GetMouseState takes only (int variables)
@@ -40,18 +40,18 @@ void player_update(Player* player){
     player->angle = calculateAngle(&direction) + 90.0f;
 
     if (keyState[SDL_SCANCODE_LEFT] || keyState[SDL_SCANCODE_A]) {
-        player->position.x -= player->speed;
+        player->position.x -= player->speed * deltaTime;
     }
     if (keyState[SDL_SCANCODE_RIGHT] || keyState[SDL_SCANCODE_D]) {
-        player->position.x += player->speed;
+        player->position.x += (player->speed) * deltaTime;
     }
 
     if (keyState[SDL_SCANCODE_UP] || keyState[SDL_SCANCODE_W]) {
-        player->position.y -= player->speed;
+        player->position.y -= player->speed * deltaTime;
     }
 
     if (keyState[SDL_SCANCODE_DOWN] || keyState[SDL_SCANCODE_S]) {
-        player->position.y += player->speed;
+        player->position.y += player->speed * deltaTime;
     }
 }
 
